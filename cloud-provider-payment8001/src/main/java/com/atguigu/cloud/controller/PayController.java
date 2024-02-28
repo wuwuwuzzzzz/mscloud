@@ -7,6 +7,7 @@ import com.atguigu.cloud.service.PayService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,9 @@ public class PayController
 {
     @Resource
     private PayService payService;
+
+    @Value("${server.port}")
+    private String port;
 
     /**
      * @param pay pay
@@ -85,5 +89,17 @@ public class PayController
     public ResultData<List<Pay>> getAll()
     {
         return ResultData.success(payService.getAll());
+    }
+
+    /**
+     * @param atguiguInfo atguiguInfo
+     * @return java.lang.String
+     * @author wxz
+     * @date 17:14 2024/2/28
+     */
+    @GetMapping(value = "/pay/get/info")
+    public String getInfoByConsul(@Value("${atguigu.info}") String atguiguInfo)
+    {
+        return "atguiguInfo: " + atguiguInfo + "\t" + "port: " + port;
     }
 }

@@ -10,8 +10,8 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @date 11:23 2024/2/28
  */
 @SpringBootApplication
-@MapperScan("com.atguigu.cloud.mapper")
 @EnableDiscoveryClient
+@MapperScan("com.atguigu.cloud.mapper")
 public class Main8001
 {
     public static void main(String[] args)
