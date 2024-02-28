@@ -43,4 +43,15 @@ public class OrderController
     {
         return restTemplate.getForObject(PAYMENT_SRV_URL + "/pay/get/" + id, ResultData.class, id);
     }
+
+    /**
+     * @return java.lang.String
+     * @author wxz
+     * @date 19:48 2024/2/28
+     */
+    @GetMapping("/consumer/pay/get/info")
+    public String getInfoByConsul()
+    {
+        return restTemplate.getForObject(PAYMENT_SRV_URL + "/pay/get/info", String.class);
+    }
 }
