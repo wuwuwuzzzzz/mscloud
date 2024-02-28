@@ -6,7 +6,6 @@ import com.atguigu.cloud.service.PayService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.List;
  * @date 11:36 2024/2/28
  */
 @Slf4j
-@Controller
+@RestController
 public class PayController
 {
     @Resource
@@ -29,10 +28,11 @@ public class PayController
      * @date 11:38 2024/2/28
      */
     @PostMapping(value = "/pay/add")
-    public int addPay(@RequestBody Pay pay)
+    public String addPay(@RequestBody Pay pay)
     {
         System.out.println(pay.toString());
-        return payService.add(pay);
+        int i = payService.add(pay);
+        return "成功插入记录，返回值：" + i;
     }
 
     /**
@@ -54,11 +54,13 @@ public class PayController
      * @date 11:38 2024/2/28
      */
     @PutMapping(value = "/pay/update")
-    public int updatePay(@RequestBody PayDTO payDTO)
+    public String updatePay(@RequestBody PayDTO payDTO)
     {
         Pay pay = new Pay();
         BeanUtils.copyProperties(payDTO, pay);
-        return payService.update(pay);
+
+        int i = payService.update(pay);
+        return "成功修改记录，返回值："+i;
     }
 
     /**
