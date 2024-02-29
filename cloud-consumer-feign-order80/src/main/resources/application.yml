@@ -42,7 +42,7 @@ spring:
     circuitbreaker:
       enabled: true
       group:
-        enabled: true # 没开分组永远不用分组的配置。精确优先、分组次之(开了分组)、默认最后
+        enabled: false # 没开分组永远不用分组的配置。精确优先、分组次之(开了分组)、默认最后
 
 # feign日志以什么级别监控哪个接口
 logging:
@@ -85,3 +85,12 @@ resilience4j:
     configs:
       default:
         timeout-duration: 20s
+  thread-pool-bulkhead:
+    configs:
+      default:
+        core-thread-pool-size: 1
+        max-thread-pool-size: 1
+        queue-capacity: 1
+    instances:
+      cloud-payment-service:
+        baseConfig: default

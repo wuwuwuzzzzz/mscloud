@@ -67,5 +67,5 @@ public interface PayFeignApi
      * @date 16:51 2024/2/29
      */
     @GetMapping(value = "/pay/bulkhead/{id}")
-    public String myBulkhead(@PathVariable("id") Integer id);
+    String myBulkhead(@PathVariable("id") Integer id);
 }

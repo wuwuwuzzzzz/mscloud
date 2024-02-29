@@ -22,7 +22,7 @@ public class PayCircuitController
      * @author wxz
      * @date 15:36 2024/2/29
      */
-    @GetMapping(value = "/pay/circuit/{id}")
+    @GetMapping("/pay/circuit/{id}")
     public String myCircuit(@PathVariable("id") Integer id)
     {
         if (id == -4)
@@ -34,7 +34,8 @@ public class PayCircuitController
             try
             {
                 TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e)
+            }
+            catch (InterruptedException e)
             {
                 log.error(e.getMessage());
             }
@@ -50,7 +51,7 @@ public class PayCircuitController
      * @author wxz
      * @date 16:51 2024/2/29
      */
-    @GetMapping(value = "/pay/bulkhead/{id}")
+    @GetMapping("/pay/bulkhead/{id}")
     public String myBulkhead(@PathVariable("id") Integer id)
     {
         if (id == -4)
@@ -63,7 +64,8 @@ public class PayCircuitController
             try
             {
                 TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e)
+            }
+            catch (InterruptedException e)
             {
                 log.error(e.getMessage());
             }
