@@ -12,3 +12,12 @@ spring:
       discovery:
         prefer-ip-address: true #优先使用服务ip进行注册
         service-name: ${spring.application.name}
+    openfeign:
+      client:
+        config:
+          #default:
+          #connectTimeout: 4000 #连接超时时间
+          #readTimeout: 4000 #读取超时时间
+          cloud-payment-service:
+          connectTimeout: 8000 #连接超时时间
+          readTimeout: 8000 #读取超时时间
