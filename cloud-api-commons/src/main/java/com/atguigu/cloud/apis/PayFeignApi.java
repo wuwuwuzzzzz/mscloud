@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author wxz
  * @date 09:51 2024/2/29
  */
-@FeignClient("cloud-payment-service")
+//@FeignClient("cloud-payment-service")
+@FeignClient("cloud-gateway")
 public interface PayFeignApi
 {
     /**
@@ -89,5 +90,26 @@ public interface PayFeignApi
      * @date 11:57 2024/3/1
      */
     @GetMapping("/pay/micrometer/{id}")
-    public String myMicrometer(@PathVariable("id") Integer id);
+    String myMicrometer(@PathVariable("id") Integer id);
+
+    /**
+     * GateWay进行网关测试案例01
+     *
+     * @param id
+     * @return com.atguigu.cloud.resp.ResultData
+     * @author wxz
+     * @date 16:57 2024/3/1
+     */
+    @GetMapping("/pay/gateway/get/{id}")
+    ResultData getById(@PathVariable("id") Integer id);
+
+    /**
+     * GateWay进行网关测试案例02
+     *
+     * @return com.atguigu.cloud.resp.ResultData<java.lang.String>
+     * @author wxz
+     * @date 16:58 2024/3/1
+     */
+    @GetMapping("/pay/gateway/info")
+    ResultData<String> getGatewayInfo();
 }
