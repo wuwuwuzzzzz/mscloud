@@ -53,7 +53,7 @@ public class OrderController
      * @author wxz
      * @date 10:03 2024/2/29
      */
-    @GetMapping(value = "/feign/pay/mylb")
+    @GetMapping("/feign/pay/mylb")
     public String mylb()
     {
         return payFeignApi.mylb();

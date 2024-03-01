@@ -96,7 +96,7 @@ public class OrderCircuitController
      * @author wxz
      * @date 09:54 2024/3/1
      */
-    @GetMapping(value = "/feign/pay/ratelimit/{id}")
+    @GetMapping("/feign/pay/ratelimit/{id}")
     @RateLimiter(name = "cloud-payment-service", fallbackMethod = "myRatelimitFallback")
     public String myBulkhead(@PathVariable("id") Integer id)
     {

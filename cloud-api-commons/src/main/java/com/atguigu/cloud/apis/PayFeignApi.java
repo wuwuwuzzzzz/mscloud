@@ -44,7 +44,7 @@ public interface PayFeignApi
      * @author wxz
      * @date 09:55 2024/2/29
      */
-    @GetMapping(value = "/pay/get/info")
+    @GetMapping("/pay/get/info")
     String mylb();
 
     /**
@@ -55,7 +55,7 @@ public interface PayFeignApi
      * @author wxz
      * @date 15:38 2024/2/29
      */
-    @GetMapping(value = "/pay/circuit/{id}")
+    @GetMapping("/pay/circuit/{id}")
     String myCircuit(@PathVariable("id") Integer id);
 
     /**
@@ -66,7 +66,7 @@ public interface PayFeignApi
      * @author wxz
      * @date 16:51 2024/2/29
      */
-    @GetMapping(value = "/pay/bulkhead/{id}")
+    @GetMapping("/pay/bulkhead/{id}")
     String myBulkhead(@PathVariable("id") Integer id);
 
     /**
@@ -77,6 +77,17 @@ public interface PayFeignApi
      * @author wxz
      * @date 09:52 2024/3/1
      */
-    @GetMapping(value = "/pay/ratelimit/{id}")
-    public String myRatelimit(@PathVariable("id") Integer id);
+    @GetMapping("/pay/ratelimit/{id}")
+    String myRatelimit(@PathVariable("id") Integer id);
+
+    /**
+     * Micrometer(Sleuth)进行链路监控的例子
+     *
+     * @param id id
+     * @return java.lang.String
+     * @author wxz
+     * @date 11:57 2024/3/1
+     */
+    @GetMapping("/pay/micrometer/{id}")
+    public String myMicrometer(@PathVariable("id") Integer id);
 }
