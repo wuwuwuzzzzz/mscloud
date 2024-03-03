@@ -62,4 +62,16 @@ public class FlowLimitController
         flowLimitService.common();
         return "------testD";
     }
+
+    /**
+     * @return java.lang.String
+     * @author wxz
+     * @date 18:06 2024/3/3
+     */
+    @GetMapping("/testE")
+    public String testE()
+    {
+        System.out.println(System.currentTimeMillis() + "      testE,排队等待");
+        return "------testE";
+    }
 }
