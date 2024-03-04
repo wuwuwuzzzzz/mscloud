@@ -2,13 +2,17 @@ package com.atguigu.cloud.controller;
 
 import com.atguigu.cloud.service.FlowLimitService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author wxz
  * @date 17:07 2024/3/3
  */
+@Slf4j
 @RestController
 public class FlowLimitController
 {
@@ -73,6 +77,44 @@ public class FlowLimitController
     {
         System.out.println(System.currentTimeMillis() + "      testE,排队等待");
         return "------testE";
+    }
+
+    /**
+     * 新增熔断规则-慢调用比例
+     *
+     * @return java.lang.String
+     * @author wxz
+     * @date 09:32 2024/3/4
+     */
+    @GetMapping("/testF")
+    public String testF()
+    {
+        //暂停几秒钟线程
+        try
+        {
+            TimeUnit.SECONDS.sleep(1);
+        }
+        catch (InterruptedException e)
+        {
+            log.error(e.getMessage());
+        }
+        System.out.println("----测试:新增熔断规则-慢调用比例 ");
+        return "------testF 新增熔断规则-慢调用比例";
+    }
+
+    /**
+     * 新增熔断规则-异常比例
+     *
+     * @return java.lang.String
+     * @author wxz
+     * @date 09:32 2024/3/4
+     */
+    @GetMapping("/testG")
+    public String testG()
+    {
+        System.out.println("----测试:新增熔断规则-异常比例 ");
+        int age = 10 / 0;
+        return "------testG,新增熔断规则-异常比例 ";
     }
 
     /**
