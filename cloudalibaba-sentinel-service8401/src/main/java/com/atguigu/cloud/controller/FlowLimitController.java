@@ -74,4 +74,19 @@ public class FlowLimitController
         System.out.println(System.currentTimeMillis() + "      testE,排队等待");
         return "------testE";
     }
+
+    /**
+     * 新增熔断规则-异常数
+     *
+     * @return java.lang.String
+     * @author wxz
+     * @date 09:26 2024/3/4
+     */
+    @GetMapping("/testH")
+    public String testH()
+    {
+        System.out.println("----测试:新增熔断规则-异常数 ");
+        int age = 10 / 0;
+        return "------testH,新增熔断规则-异常数 ";
+    }
 }
